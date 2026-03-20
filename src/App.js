@@ -7,6 +7,15 @@ const messages = [
 ];
 
 export default function App() {
+  return (
+    <div>
+      <Steps />
+      <Steps />
+    </div>
+  );
+}
+
+function Steps() {
   // const arr = useState(1);
   // console.log(arr);
   const [step, setStep] = useState(1);
@@ -15,17 +24,17 @@ export default function App() {
   function handlePrevious() {
     // setStep(step - 1);
     // setStep(step > 1 ? step - 1 : step)
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep(() => step - 1);
   }
   function handleNext() {
     // setStep(step + 1);
     // setStep((step) => (step < 3 ? step + 1 : step));
-    if (step < 3) setStep(step + 1);
+    if (step < 3) setStep(() => step + 1);
     // setTest({ name: "Michelle" });
   }
   return (
-    <>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+    <div>
+      <button className="close" onClick={() => setIsOpen((is) => !is)}>
         &times;
       </button>
       {isOpen && (
@@ -58,6 +67,6 @@ export default function App() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
